@@ -13,7 +13,7 @@ class MyBotManagerLoader(override val configSource: CONFIG_SOURCE = CONFIG_SOURC
                 jsonLoader.loadConfig(botManager)
             }
             else -> {
-                TODO("Other methods to load the Bot Manager are not yet implemented")
+                TODO("Other methods to load the Bot Manager Config are not yet implemented")
             }
         }
     }

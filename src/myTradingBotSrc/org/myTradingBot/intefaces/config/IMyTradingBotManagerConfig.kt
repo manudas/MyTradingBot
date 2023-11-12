@@ -6,12 +6,12 @@ import java.util.*
 
 interface IMyTradingBotManagerConfig {
     fun loadConfig(botManager: IBotManager)
-    fun loadExchange(exchangeName: String): IMyTradingBot {
+    fun loadExchange(exchangeName: String, configSource: CONFIG_SOURCE): IMyTradingBot {
         val cl = this.javaClass.classLoader
         return cl.loadClass("org.myTradingBot.implementations.bot.MyTrading${exchangeName.lowercase()
             .replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }}Bot")
             .getDeclaredConstructor()
-            .newInstance() as IMyTradingBot
+            .newInstance(configSource) as IMyTradingBot
     }
 }
 

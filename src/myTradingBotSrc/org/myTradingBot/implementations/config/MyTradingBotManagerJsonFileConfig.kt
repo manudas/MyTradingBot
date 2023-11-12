@@ -6,6 +6,7 @@ import org.json.JSONObject
 
 import org.myTradingBot.intefaces.bot.IBotManager
 import org.myTradingBot.intefaces.config.CONFIG_ATTRIBUTE_FIELDS
+import org.myTradingBot.intefaces.config.CONFIG_SOURCE
 import org.myTradingBot.intefaces.config.IMyTradingBotManagerConfig
 
 class MyTradingBotManagerJsonFileConfig: IMyTradingBotManagerConfig {
@@ -20,7 +21,7 @@ class MyTradingBotManagerJsonFileConfig: IMyTradingBotManagerConfig {
         // todo: In future versions we should check a property in this json that will state whether or not we should go to the database to grab the needed data
 
         val exchangesJsonArr = jsonObj.getJSONArray(CONFIG_ATTRIBUTE_FIELDS.exchanges.value)
-        val exchanges = List(exchangesJsonArr.length()) { i -> this.loadExchange(exchangesJsonArr.getString(i))}
+        val exchanges = List(exchangesJsonArr.length()) { i -> this.loadExchange(exchangesJsonArr.getString(i), CONFIG_SOURCE.JSON_FILE)}
 
         botManager.botList = exchanges
     }

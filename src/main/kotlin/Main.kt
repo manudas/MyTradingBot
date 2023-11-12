@@ -13,4 +13,6 @@ fun main(args: Array<String>) {
     val myTradingBotManager: IBotManager = MyTradingBotManager()
     val myIMyTradingBotManagerLoader: IMyTradingBotManagerLoader = MyBotManagerLoader()
     myIMyTradingBotManagerLoader.load(myTradingBotManager)
+    myTradingBotManager.loadBots()
+    myTradingBotManager.startBots()
 }
